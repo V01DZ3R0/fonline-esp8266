@@ -15,8 +15,8 @@ int a[n];                                                            // чере
 char *online_info[7] = {"FOnline 2:", "FORP:", "AWTD:", "AoP:", "Requiem:", "Fonline 3:", "Parareal:"};
 
 /* Wifi SSID & WPA password */
-const char *ssid = "TP-LINK_64B8";
-const char *password = "13555603";
+const char *ssid = "TP-LINK_12A3";
+const char *password = "12345678"; 
 
 /* Initialize display
  *
