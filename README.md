@@ -1,12 +1,13 @@
 # fonline-esp8266
 
-### Difference
-
-Added dynamic total online counter, refactored some code.
 
 > World without transistors that's being held online by transistors
 
 FOnline online players count status for ESP8266 powered chips written in Arduino Framework
+
+### Difference
+
+Added dynamic total online counter, refactored some code.
 
 ### Core
 
