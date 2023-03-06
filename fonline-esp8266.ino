@@ -7,7 +7,7 @@ unsigned int total_online = 0;
 
 /* Arrays with IP addresses and ports of servers */
 char *hosts[] = {"game.fonline2.com", "fo4rp.frp.su", "fonline.anotherwaytodie.ru", "play.fonline-aop.net", "game.fallout-requiem.ru", "65.21.134.233", "141.95.158.46"};
-int = sizeof(hosts) / sizeof(int);                                   // платформозависимая хрень, но вроде работает
+int n = sizeof(hosts) / sizeof(int);                                 // платформозависимая хрень, но вроде работает
 const uint16_t ports[] = {4000, 4000, 4002, 4000, 6112, 2238, 2238}; // тоже n
 int a[n];                                                            // через это сумму обновлять будем
 
@@ -60,7 +60,7 @@ void setup()
  * sends an array of bytes and
  * retrieves the online into buffer
  */
-void OnlineCheck(char *host, uint16_t port, char *online_infom, int i)
+void OnlineCheck(char *host, uint16_t port, char *online_info, int i)
 {
     Serial.print("Connecting to remote: ");
     Serial.print(host);
@@ -115,7 +115,7 @@ void OnlineCheck(char *host, uint16_t port, char *online_infom, int i)
             display.setTextAlignment(TEXT_ALIGN_LEFT);
             display.setFont(ArialMT_Plain_24);
             display.clear();
-            display.drawString(0, 0, online_info);
+            display.drawString(0, 0, (String)online_info);
             display.drawString(0, 32, str_online);
             display.display();
 
