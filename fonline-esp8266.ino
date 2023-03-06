@@ -138,7 +138,7 @@ void loop()
     String str_total_online;
     for (int i = 0; i < n; i++)
     {
-        total_online -= a[i];
+          total_online = total_online - a[i];
         OnlineCheck(hosts[i], ports[i], online_info[i], i);
         total_online += a[i];
         str_total_online = itoa(total_online, buffer, 10);
