@@ -62,7 +62,7 @@ void setup()
  * sends an array of bytes and
  * retrieves the online into buffer
  */
-void OnlineCheck(char *host, uint16_t port, char *online_info, int &a)
+int OnlineCheck(char *host, uint16_t port, char *online_info)
 {
     Serial.print("Connecting to remote: ");
     Serial.print(host);
@@ -109,7 +109,7 @@ void OnlineCheck(char *host, uint16_t port, char *online_info, int &a)
             online |= (buffer[1] << 8) & 0xFF;
             online |= buffer[0] & 0xFF;
             Serial.println(online);
-            a = online;
+            online;
             char converted[];
             String str_online = itoa(online, converted, 10);
 
@@ -131,6 +131,7 @@ void OnlineCheck(char *host, uint16_t port, char *online_info, int &a)
         Serial.println("Connection failed or was refused.");
         delay(5000);
     }
+    return online;
 }
 
 void loop()
@@ -139,7 +140,7 @@ void loop()
     for (int i = 0; i < n; i++)
     {
         total_online -= a[i];
-        OnlineCheck(hosts[i], ports[i], online_info[i], a[i]);
+        a[i] = OnlineCheck(hosts[i], ports[i], online_info[i]);
         total_online += a[i];
         str_total_online = itoa(total_online, buffer, 10);
         display.drawString(0, 16, "Total online:");
