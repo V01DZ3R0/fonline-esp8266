@@ -15,8 +15,8 @@ int a[n];                                                            // чере
 char *online_info[7] = {"FOnline 2:", "FORP:", "AWTD:", "AoP:", "Requiem:", "Fonline 3:", "Parareal:"};
 
 /* Wifi SSID & WPA password */
-const char *ssid = "TP-LINK_12A3";
-const char *password = "12345678"; 
+const char *ssid = "networkssid";
+const char *password = "networkpassword";
 
 /* Initialize display
  *
@@ -138,7 +138,7 @@ void loop()
     String str_total_online;
     for (int i = 0; i < n; i++)
     {
-          total_online = total_online - a[i];
+        total_online = total_online - a[i];
         OnlineCheck(hosts[i], ports[i], online_info[i], i);
         total_online += a[i];
         str_total_online = itoa(total_online, buffer, 10);
