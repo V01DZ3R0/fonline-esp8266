@@ -1,7 +1,7 @@
 # fonline-esp8266
 
-
 > World without transistors that's being held online by transistors
+
 
 FOnline online players count status for ESP8266 powered chips written in Arduino Framework
 
@@ -9,20 +9,9 @@ FOnline online players count status for ESP8266 powered chips written in Arduino
 
 Added dynamic total online counter, refactored some code.
 
-### Core
+###  TODO
 
-- [x] Connects to remote
-- [x] Writes 4 required bytes
-- [x] Delay in between write and read
-- [x] Read data to buffer
-- [x] Endian swap
-- [x] Online number parse
-- [x] Render onto OLED 128x64 display
-- [x] Multiple remotes
-
-### Optional TODO
-
-It's all done!
+- [ ] make it work.
 
 ### Required libraries
 
