@@ -103,13 +103,13 @@ int OnlineCheck(char *host, uint16_t port, char *online_info)
                 printf("%02X", buffer[i]);
             }
             Serial.println("Online:");
-            
+
             online |= (buffer[3] << 24) & 0xFF;
             online |= (buffer[2] << 16) & 0xFF;
             online |= (buffer[1] << 8) & 0xFF;
             online |= buffer[0] & 0xFF;
             Serial.println(online);
-            online; //бля че это, надо тож попробовать убрать
+            // бля че это, надо тож попробовать убрать
             char converted[3];
             String str_online = itoa(online, converted, 10);
 
@@ -117,7 +117,7 @@ int OnlineCheck(char *host, uint16_t port, char *online_info)
             display.setFont(ArialMT_Plain_16);
             display.clear();
             display.drawString(0, 0, online_info);
-            display.drawString(0, 32, str_online); //вообще хочу по красоте заменить на display.drawString(0, 32, itoa(online, converted, 10));
+            display.drawString(0, 32, itoa(online, converted, 10)); // вообще хочу по красоте заменить на display.drawString(0, 32, itoa(online, converted, 10));
             display.display();
 
             delete[] buffer;
