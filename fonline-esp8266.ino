@@ -147,5 +147,4 @@ void loop()
         display.drawString(0, 32, str_total_online);
         display.display();
     }
-    total_online = 0;
 }
