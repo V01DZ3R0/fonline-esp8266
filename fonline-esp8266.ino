@@ -10,7 +10,7 @@ char *hosts[] = {"game.fonline2.com", "fo4rp.frp.su", "fonline.anotherwaytodie.r
 const int n = sizeof(hosts) / sizeof(int);                           // платформозависимая хрень, но вроде работает
 const uint16_t ports[] = {4000, 4000, 4002, 4000, 6112, 2238, 2238}; // тоже n
 int a[n];
-char buffer[3];
+char str_buffer[3];
 String str_total_online;
 
 /* Names of servers */
@@ -71,7 +71,7 @@ int OnlineCheck(char *host, uint16_t port, char *online_info)
     Serial.println("[Connected]");
 
     WiFiClient client;
-
+    unsigned int online = 0;
     if (client.connect(host, port))
     {
         byte fonline[] = {0xFF, 0xFF, 0xFF, 0xFF};
@@ -103,21 +103,21 @@ int OnlineCheck(char *host, uint16_t port, char *online_info)
                 printf("%02X", buffer[i]);
             }
             Serial.println("Online:");
-            unsigned int online = 0;
+            
             online |= (buffer[3] << 24) & 0xFF;
             online |= (buffer[2] << 16) & 0xFF;
             online |= (buffer[1] << 8) & 0xFF;
             online |= buffer[0] & 0xFF;
             Serial.println(online);
-            online;
-            char converted[];
+            online; //бля че это, надо тож попробовать убрать
+            char converted[3];
             String str_online = itoa(online, converted, 10);
 
             display.setTextAlignment(TEXT_ALIGN_LEFT);
             display.setFont(ArialMT_Plain_16);
             display.clear();
             display.drawString(0, 0, online_info);
-            display.drawString(0, 32, str_online);
+            display.drawString(0, 32, str_online); //вообще хочу по красоте заменить на display.drawString(0, 32, itoa(online, converted, 10));
             display.display();
 
             delete[] buffer;
@@ -142,7 +142,7 @@ void loop()
         total_online -= a[i];
         a[i] = OnlineCheck(hosts[i], ports[i], online_info[i]);
         total_online += a[i];
-        str_total_online = itoa(total_online, buffer, 10);
+        str_total_online = itoa(total_online, str_buffer, 10);
         display.drawString(0, 16, "Total online:");
         display.drawString(0, 32, str_total_online);
         display.display();
